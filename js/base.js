@@ -59,10 +59,10 @@ console.log(nombreConcatenado)
 //perdir grados celcius en su localidad
 let grados = prompt('Imgresa grados celcius')
 let celciusNum = parseInt(grados)
-if (celciusNum === null){
-    console.log(`La temperatura es ${celciusNum * (9/5) + 32} °F`)
-} else{
+if (grados === null){
     console.log('temperatura invalid')
+} else{
+    console.log(`La temperatura es ${celciusNum * (9/5) + 32} °F`)
 }
 
 //convertir C to F
