@@ -1,4 +1,6 @@
 
+
+
 /**
  * Ejercicio 2
  * Pedir al usuario usuario un numero entre 1 y 10
@@ -31,23 +33,10 @@
  * Vocales -> oauo
  */
 
-//  let phrase = prompt('ingrese una oración')
-//  let fin = phrase.length -1
+//   let phrase = prompt('ingrese una oración')
+//   let fin = phrase.length -1
 
-//  for(let i =0; i <=fin; i++) {
-//      if (
-//          phrase[i] == 'a' ||
-//          phrase[i] == 'e' || 
-//          phrase[i] == 'i' || 
-//          phrase[i] == 'o' ||
-//          phrase[i] == 'u' ||
-//          phrase[i] == ' '
-//          )
-//          {
-//          console.log( `${phrase[i].concat()}` )
-//      }
 
-//  }
 
 /**
  * 
@@ -58,20 +47,34 @@
  * 
  */
 
-   let even = parseInt(prompt('ingrese un numero entre 10 y 100'))
-   let k = 2
-   let evenConcatenate = ""
+//    let even = parseInt(prompt('ingrese un numero entre 10 y 100'))
+//    let k = 2
+//    let evenConcatenate = ""
  
-  if (even >= 10 && even <= 100) {
-      while (k < even) {
-          console.log(k)
-          k += 2
-  }
-  console.log(evenConcatenate += k)
-   }
+//   if (even >= 10 && even <= 100) {
+//       while (k <= even) {
+               
+//         evenConcatenate += [k,'']
+//         k += 2
+
+
+//   }
+//   console.log(evenConcatenate)
+// } else{
+//     console.log('Numero fuera de rango')
+// }
    
 
+//palabra en reversa
 
+const nameUser = prompt ('escribe un a plabra')
+let strReversed = ''
+
+for(let i = nameUser.length - 1; i >= 0; i--){
+    strReversed += nameUser[i]
+    console.log('i')
+}
+console.log(strReversed)
 
 
 
