@@ -1,70 +1,85 @@
+
+
+
 /**
- * Ejercicio 1 *Obligatorio
- * Realizar una funcion que reciba como parametro 1 array
- * Y devuelva un array con solo los elementos Pares de ese array
- * p.ej.
- * -> evenOnly( [1,2,3,4,18] ) -> [2,4,18]
- * -> evenOnly( [10, 2, 5] ) -> [10,2]
- * -> evenOnly() -> 'Se necesita un array'
+ * Funcion que reciba una palabra
+ * Retorne la palabra invertida
+ *
+ * reverseStr('hola mundo')
+ * -> 'odnum aloh'
  * 
+ * Usar solo metodos de str y array
  */
- let numArray = []
 
+//  let strToReverse = ['hola mundo']
 
- const evenOnly = (arr) => {
-    let onlyEven =[]
-    let j = 0
-    for (let i = 0; i <= arr.length; i++){
-        //console.log(i)
-        if ((arr[i] % 2) == 0) {
-            onlyEven[j++]=arr[i]
-          //  console.log(j)
-
-        } else if (!arr.length) {
-            console.log ('Se necesita un array')
-        }
-    }
-    console.log (onlyEven)
-}
-evenOnly(numArray)
-
-
-// let nums = [1,3,5,2,8,7];
-// let sortedNums = nums.sort();
-// console.log(sortedNums);
-
-
-// let items = ["Kodemia", 12, "Francisco"];
-// let itemsString = items.toString();
-// console.log(itemsString);
-
-
-// let states = ['zacatecas', 'durango', 'guanajuato', 'queretaro']
-// let towns = ['jerez', 'canatlan', 'irapuato', 'juriquilla'] 
-// let joinedArrays = states.concat(towns);
-// console.log(joinedArrays);
-
-
-
+//  const reverseStr = strToReverse.map((str) => {
+//      let splited = str.toString().split('')
+//      let reverse = splited.reverse()
+//      let joinedArr = reverse.join('')
+//      console.log(joinedArr)
+//      return joinedArr
+//  })
  
-
-
-
-
+//  console.log(reverseStr)
 
 /**
- * Ejercicio 2 *Opcional
- * Funcion que reciba como parametro una array de strings
- * y devuelva el primer y ultimo caracter de cada string
- * p.ej.
- * -> firstAndLast ( ['hola', 'mundo'] ) -> ['ha', 'mo']
+ * Funcion que reciba un array de numeros
+ * y devuelva el promedio de todos los elementos
+ * 
+ * getAverage( [10, 8, 9, 7] )
+ * -> 8.5
+ */
+
+let numArr = [10, 8, 9, 7]
+let divisor = numArr.length
+let sum = 0
+
+const getAverage = numArr.reduce((accum, currentValue) => {
+    
+    return accum + currentValue
+
+})
+let finalAverage = getAverage/divisor
+console.log(finalAverage)
+
+/**
+ * Funcion que reciba un array de strings
+ * y devuelva un array indicando si son palindromos o no
+ * 
+ * arePalindrome( ['oso','juan', 'seres'] )
+ * -> [true, false, true]
  */
 
 
+//  let strPalindrome = ['oso','juan', 'seres']
+
+
+//  const arePalindrome = strPalindrome.map((str) => {
+//      let splited = str.toString().split('')
+//      let reverse = splited.reverse()
+//      let joinedArr = reverse.join('')
+//     //  console.log(splited)
+//     //  console.log(reverse)
+//     //  console.log(joinedArr)
+//      return joinedArr
+//  })
+ 
+// // console.log(strPalindrome)
+// // console.log(arePalindrome)
+
+// const arrComparation = ((strPalindrome, arePalindrome) => {
+//     let boolCompar = strPalindrome.map(str1 => {
+//         console.log((str1))
+//         return arePalindrome.includes(str1)
+//     })
+//     return boolCompar
+// })
+
+// console.log(arrComparation(strPalindrome, arePalindrome))
+
 /**
- * Ejercicio 3
- * Estudiar todos los métodos de Array
- * https://www.w3schools.com/jsref/jsref_obj_array.asp
- * https://www.programiz.com/javascript/library/array
- * 
+ * Estudiar los métodos de array
+ * .filter()
+ * .reduce()
  */
