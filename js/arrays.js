@@ -1,89 +1,46 @@
-//map()
-//filter()
+// .filter
 
-// let arr = [1,2,3,4]
+// [1,2,3].filter(callback)
 
-// // for (i = 0; i < arr.length; i++){
-// //     console.log (arr[i])
-// // }
+// let newArr = [1,2,3,4,5,6,7,8,9]
+// let soloPares = newArr.filter((cv, index, arr) => {
 
-// //arr.forEach((valorDeCadaIteracion, index (indicice del elemento), arrayOriginal) => {})
-// arr.forEach((value, index, arr) => {
-//     console.log (value, index, arr)
-//     //cv = Core Value
-// })
+//    // if (cv % 2 === 0) {
+//    //    return cv
+//    // }
+//    return cv % 2 === 0
 
-// //para aceder unicamente a 1 o 2 de items se tiene que escribir compelto 
-// //y solo llamar los que se requeiren
-// arr.forEach((value, index, arr) => {
-//     console.log (value, arr)
-// })
-// // otra forma de acceder al valor del indice
-// arr.forEach((value) =>  console.log (value))
+// }) 
+
+// console.log(soloPares)
 
 /**
- * Escribir una funcion
- * Reciba como parametro Un array de ciudades
- * Retornar las ciudades capitaslizadas
- * capitalize(['méxicO','RIo', 'Los AngelEs'])
- * -> ['México','Rio', 'Los Angeles']
- * 
+ * Escribir una funcion que
+ * filtra solo las ciudades
+ * desde un array
+ * resolver con foreach()
+ * resolver con filter ()
  */
 
-//  let arrCities = ['méxicO', 'Rio', 'Los Angeles']
-//  //let someString = 'los angeles';
-//  //Escribir una funcion
-//  //Reciba como parametro un array de ciudades
-//  //Retornar las ciudades capitalizadas
- 
-//   let capitalizeCities = ( arrCities = [] ) => {
-//       arrCities.forEach((currentValue, index, arr)  => {
-//          let words = currentValue.split(' ');
- 
-//          words.forEach( (currentValue) => {
-//              let primerCaracter = currentValue.charAt(0).toUpperCase();
-//              let cadenaSinPrimerCaracter = currentValue.substring(1, currentValue.length).toLowerCase();
-//              //let resultado = ;
-            
-//              console.log(primerCaracter + cadenaSinPrimerCaracter);
+// let arrMultiple =[1,2,3, 'México', 'Peru', 'España', 3]
 
-//              //declarar array vacia y hacer push en cada elemento 
-//          })
- 
-//       } )
-//   }
- 
- 
-//  console.log(capitalizeCities(arrCities));
- 
-/**
- * .map()
- * [1,2,3,4,5,6,7,8,9,10]
- * [2,4,6,8,10...20]
- */
+// const strArr = arrMultiple.filter((str) => {
+//    strEval = typeof str
+//    if (typeof str == 'string') {
+//       return str
+//    }
 
-// let mapArr = [1,2,3,4,5,6,7,8,9,10]
-
-// let doubleArr = mapArr.map((cv, index,arr) => {
-//     let transformed = cv * 2
-//     return transformed
 // })
 
-// console.log (mapArr)
-// console.log (doubleArr)
+console.log(arrMultiple)
 
-/**
- * Funcion
- * getFirstLast(['hola','mundo'])
- * -> ['ha','mo']
- * .map()
- */
- let arrStr = ['hola','mundo']
+let arrMultiple = [1,2,4, 'México', 'Perú', 'España', 3]
 
- let cropped = arrStr.map((str) => {
-    let sliced = str.charAt(0) + str.charAt((str.length)-1)
-    return sliced
- } )
-    
- console.log(cropped)
-
+const strArr = arrMultiple.filter((element) => {
+    console.log( typeof element )
+    if ( typeof element === 'string' ) {
+        return element
+    }
+}
+)
+console.log(strArr)
