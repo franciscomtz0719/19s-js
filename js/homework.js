@@ -1,70 +1,111 @@
-// Ejercicio
 /**
- * Del siguiente objeto
- * Realizar una función que 
- * 1. Calcule el numero de empleados
- * 2. Obtenga el total a pagar
- * employesAndTotal( { 'Albert': 50000, 'jorge': 50000 })
- * -> Son 3 empleados y el total es 100000
+ * Dado un array de objetos koders
+ * Imprimir en consola, todos los nombres de cada koder
+ * 
+ * 'jorge luis Camarillo tiene 30 años y es de la generacion 6'
+ * 'Erik Gutierrez tiene 30 años y es de la generacion 16'
+ * ....
+ * 
  */
 
- let salarios = {
-    'juan': 30000,
-    'Albert': 50000,
-    'jorge': 50000
-}
-
-const employesAndTotal = ( obj ) => {
-    let suma = 0
-    let empleados = 0
-
-    for (key in obj) {
-        suma += parseInt(obj[key]) 
-        //console.log(suma)
-        empleados++
-        //console.log(empleados)
+ let koders =  [
+    {
+        name: 'jorge luis',
+        lastName: 'Camarillo',
+        age: 30,
+        generation: 6,
+        modulos: ['js','node js', 'cloud'], 
+    },
+    {
+        name: 'Erik',
+        lastName: 'Gutierrez',
+        age: 20,
+        generation: 15,
+        modulos: ['Node'], 
+    },
+    {
+        name: 'Sara',
+        lastName: 'Reveles',
+        age: 24,
+        generation: 12,
+        modulos: ['js'], 
     }
-    return `la cantidad de empleados es ${empleados} y la cantidad a pagar es ${suma}`
+]
 
-}
+koders.forEach((objCompleto, index, arrayObj) => {
+    // console.log(`
+    //     ${objCompleto.name} ${objCompleto.lastName}  
+    //     tiene ${objCompleto.age} años y es  
+    //     de la generacion ${objCompleto.generation}
+    // `)
+})
 
-console.log(employesAndTotal(salarios))
-
-/**
- * Ejercicio 2.
- * Dado un objeto inicial, hacer los siguientes puntos 
- * 
- * 1. Agregar el lenguaje 'Go' a la lista de lenguajes
- * 2. Cambiar el nivel a 4
- * 3. Eliminar la propiedad avatar
- * 4. Agregar una nueva propiedad de edad y poner el valor de 30
- * 5. Imprimir en consola todos los lenguajes dominados
- * 6. Clonar el objeto en uno nuevo
- * 7. Imprimir en consola el nuevo objeto
- * 
- * @hint https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
- */
-
-let koder = {
-    languages: ["JavaScript", "Python", "Ruby"],
-    isMentor: true,
-    level: 3,
-    avatar: "https://picsum.photos/200/300"
-}
-
-koder.languages.push('Go')
-koder.level = 4
-delete koder.avatar
-koder.edad = 30
-console.log(koder.languages)
-let koderClone = {...koder}
-console.log(koderClone)
 
 
 /**
- * Estudiar los metodos de objetos
- * https://www.w3schools.com/js/js_object_methods.asp
- * https://www.digitalocean.com/community/tutorials/how-to-use-object-methods-in-javascript
- * https://www.programiz.com/javascript/library/object/assign
+ * Del mismo array de koders
+ * Obtener la suma de todas las edades
  * 
  */
+
+let totalAge = 0
+koders.forEach((objCompleto, index, arrayObj) => {
+    totalAge += objCompleto.age
+})
+console.log(totalAge)
+
+
+let totalAgeREd = koders.reduce( (acc, cv) => {
+    return acc + cv.age
+}, 0) 
+
+console.log(totalAgeREd)
+
+
+
+/**
+ * Del objeto library
+ * 1. Obtener el numero de libros que se estan leyendo
+ * 2. Obtener una lista de todos los autores
+ * 3. Obtener una lista de todos los Libros
+ * 
+ */
+ let library = [ 
+    {
+        author: 'Bill Gates',
+        title: 'The Road Ahead',
+        readingStatus: true
+    },
+    {
+        author: 'Steve Jobs',
+        title: 'Walter Isaacson',
+        readingStatus: true
+    },
+    {
+        author: 'Suzanne Collins',
+        title:  'Mockingjay: The Final Book of The Hunger Games', 
+        readingStatus: false
+    },
+    {
+        author: 'Suzanne Collins',
+        title:  'Mockingjay: The Final Book of The Hunger Games', 
+        readingStatus: false
+    }
+]
+
+let totalReading = library.reduce( (total, libro) => {
+    return libro.readingStatus ? total += 1 : total
+}, 0)
+
+console.log(totalReading)
+
+let authors = library.map( (author) => {
+    return author.author
+})
+console.log(authors)
+
+let books = library.map( (book) => {
+    return book.title
+})
+
+console.log(books)
