@@ -1,11 +1,26 @@
 /**
- * Dado un array de objetos koders
- * Imprimir en consola, todos los nombres de cada koder
- * 
- * 'jorge luis Camarillo tiene 30 años y es de la generacion 6'
- * 'Erik Gutierrez tiene 30 años y es de la generacion 16'
- * ....
- * 
+ * Ejercicio 1
+ * <ul id="menu" class="menu">
+        <li class="item__menu">Home</li>
+        <li class="item__menu">Products</li>
+        <li class="item__menu">About Us</li>
+    </ul>
+    Replicar con JS este markup
+ */
+const idUnorderList = document.querySelector('ul')
+const allListElement = document.querySelectorAll('li')
+
+idUnorderList.setAttribute('id', 'menu')
+idUnorderList.setAttribute('class', 'menu')
+
+allListElement.forEach( (item) => {
+    item.setAttribute('class', 'list__item')
+})
+/**
+ * Dado un arreglo de koders
+ * 1. Generar una lista con la clase koders
+ * 2. Agregar a cada koder en esa lista
+ * 3. A todos los koders agregarles la clase 'item_koder'
  */
 
  let koders =  [
@@ -32,80 +47,46 @@
     }
 ]
 
-koders.forEach((objCompleto, index, arrayObj) => {
-    // console.log(`
-    //     ${objCompleto.name} ${objCompleto.lastName}  
-    //     tiene ${objCompleto.age} años y es  
-    //     de la generacion ${objCompleto.generation}
-    // `)
+// let kodersName = []
+// for (key in koders) {
+//     // console.log(koders[key].name)
+//     kodersName.push(koders[key].name)
+//     // console.log(kodersName)
+// }
+// console.log(kodersName)
+let dinamicList = document.getElementById('dinamic-list')
+koders.forEach ((cv)=> {
+    let li = document.createElement('li')
+    li.innerText = cv.name
+    dinamicList.appendChild(li)
 })
-
-
-
 /**
- * Del mismo array de koders
- * Obtener la suma de todas las edades
+ * Opcional
+ * Del mismo arreglo de koders
+ * 1. Generar una tabla de koders con las columnas
+ *   - Nombre completo
+ *   - Edad
+ *   - Generación 
+ * 
+ *   Opcional -Modulos cursados
+ * 
+ * Referencia: https://slack-files.com/TCRFJBKB6-F03J4CBCBA7-8b1c39e7bc
  * 
  */
 
-let totalAge = 0
-koders.forEach((objCompleto, index, arrayObj) => {
-    totalAge += objCompleto.age
+let tbody = document.querySelector('tbody')
+koders.forEach((koder, index, arr) =>{
+    let tr = document.createElement('tr')
+    let tdName = document.createElement('td')
+    tdName.textContent = koder.name
+    tr.appendChild(tdName)
+    let tdAge = document.createElement('td')
+    tdAge.textContent = koder.age
+    tr.appendChild(tdAge)
+    let tdGen = document.createElement('td')
+    tdGen.textContent = koder.generation
+    tr.appendChild(tdGen)
+
+    tbody. appendChild(tr)
+
 })
-console.log(totalAge)
-
-
-let totalAgeREd = koders.reduce( (acc, cv) => {
-    return acc + cv.age
-}, 0) 
-
-console.log(totalAgeREd)
-
-
-
-/**
- * Del objeto library
- * 1. Obtener el numero de libros que se estan leyendo
- * 2. Obtener una lista de todos los autores
- * 3. Obtener una lista de todos los Libros
- * 
- */
- let library = [ 
-    {
-        author: 'Bill Gates',
-        title: 'The Road Ahead',
-        readingStatus: true
-    },
-    {
-        author: 'Steve Jobs',
-        title: 'Walter Isaacson',
-        readingStatus: true
-    },
-    {
-        author: 'Suzanne Collins',
-        title:  'Mockingjay: The Final Book of The Hunger Games', 
-        readingStatus: false
-    },
-    {
-        author: 'Suzanne Collins',
-        title:  'Mockingjay: The Final Book of The Hunger Games', 
-        readingStatus: false
-    }
-]
-
-let totalReading = library.reduce( (total, libro) => {
-    return libro.readingStatus ? total += 1 : total
-}, 0)
-
-console.log(totalReading)
-
-let authors = library.map( (author) => {
-    return author.author
-})
-console.log(authors)
-
-let books = library.map( (book) => {
-    return book.title
-})
-
-console.log(books)
