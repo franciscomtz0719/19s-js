@@ -35,32 +35,24 @@
 </head>
 <body>
 
-    <ul >
-        <li>Home</li>
-        <li>Products</li>
-        <li>About Us</li>
-    </ul>
+    <h1>
+        Dom Eventss
+    </h1>
 
-    <ul id="dinamic-list"></ul>
+    <button onclick="clickBoton()">Click me!</button>
+    <button onclick="calcular()">Calcular!</button>
+    <input type="text" 
+        onkeydown="empezando()"
+        onkeypress="presionando()"
+        onkeyup="termiando()">
+    <textarea name="" id="" cols="30" rows="10"></textarea>
 
-    <!-- tabla -->
+    <details ontoggle="toggleElement()">
+        <summary>Elemento que almacena.</summary>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium dolore et veniam, error impedit sapiente vero explicabo molestiae quae at vel, esse aliquid. Doloribus asperiores tenetur facere nostrum eaque. Rem! </p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam repudiandae odit dolorem soluta eaque tempora veritatis harum? Voluptatibus aliquam natus laboriosam nam corrupti illo, enim aperiam, nobis, eos ratione quasi!</p>    
+    </details>
 
-    <table>
-        <thead>
-            <th>Nombre</th>
-            <th>Edad</th>
-            <th>Generación</th>
-            <th>Modulos cursados</th>
-        </thead>
-        <tbody>
-            <!-- <tr>
-                <td>Jorge</td>
-                <td>30</td>
-                <td>6</td>
-            </tr> -->
-        </tbody>
-    </table>
-
-    <script src="./js/homework.js"></script>
+    <script src="./js/domEvents.js"></script>
 </body>
 </html>
