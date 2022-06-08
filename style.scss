@@ -1,0 +1,21 @@
+*{
+    box-sizing: border-box;
+}
+
+.homework-list{
+    border: 3px solid cyan;
+    width: 50%;
+    border-radius: 1rem;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+
+    &__element{
+        background: rgb(3,219,173);
+        background: linear-gradient(90deg, rgba(3,219,173,0.9223039557619923) 0%, rgba(17,235,42,0.12398462803089982) 50%, rgba(0,212,255,1) 100%);
+        color: white
+
+    }}
+
+    h1{
+        text-align: center
+    }

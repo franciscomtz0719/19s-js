@@ -1,0 +1,24 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.homework-list {
+  border: 3px solid cyan;
+  width: 50%;
+  border-radius: 1rem;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.homework-list__element {
+  background: #03dbad;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(3, 219, 173, 0.922304)), color-stop(50%, rgba(17, 235, 42, 0.123985)), to(#00d4ff));
+  background: linear-gradient(90deg, rgba(3, 219, 173, 0.922304) 0%, rgba(17, 235, 42, 0.123985) 50%, #00d4ff 100%);
+  color: white;
+}
+
+h1 {
+  text-align: center;
+}
+/*# sourceMappingURL=style.css.map */
