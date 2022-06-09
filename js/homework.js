@@ -349,38 +349,88 @@ const filterUsers = (strToFilter) => {
 }
 
 
+const loadSearch = (users) => {
+  let template = users.reduce((acc, cv) => {
+      acc += `
+      <li class="list-group-item d-inline-flex justify-content-between align-items-start homework-list__element">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">${cv.name}</div>
+          ${cv.email}
+        </div>
+        <span class="badge bg-primary rounded-pill">${cv.phone}</span>
+      </li>
+    `
+    return acc
+  }, '')
+  
+  document.querySelector('.homework-list').innerHTML = template
+} 
+
+/**
+ * Ejercicio 1
+ * El ejercicio de filtrado de la clase 15 
+ * https://github.com/dered-dev/19gjs/blob/class/class-fiveteen/js/homework.js
+ * Modificar varios event listener
+ * .blur()
+ * .change()
+ * .click
+ * .keyup()
+ * .keypress()
+ */
 
 
+//KEYUP
 
-let inputSearch = document.getElementById('filter__value')
-inputSearch.addEventListener('keyup', () =>{
+// let inputSearch = document.getElementById('filter__value')
+// inputSearch.addEventListener('keyup', () =>{
 
-    //obtener el valor a buscar
-    let searchItem = inputSearch.value
-    //imprimir en consola
-    let usersFiltrados = filterUsers(searchItem)
+//     //obtener el valor a buscar
+//     let searchItem = inputSearch.value
+//     //imprimir en consola
+//     let usersFiltrados = filterUsers(searchItem)
     
+//     loadSearch(usersFiltrados)
+//     //agregar al layout en homwork list
+//     console.log (usersFiltrados)
+// })
+
+
+//BLUR
+
+
+// let inputBlur = document.getElementById('filter__value')
+// inputBlur.addEventListener('blur', () =>{
+
+//     let searchItem = inputBlur.value
+//     let usersFiltrados = filterUsers(searchItem)   
+//     loadSearch(usersFiltrados)
+// })
+
+//CLICK
+let inputSearch = document.getElementById('filter__value')
+let filterButton = document.getElementById('search-button')
+filterButton.addEventListener('click', () =>{
+
+    let searchItem = inputSearch.value
+    let usersFiltrados = filterUsers(searchItem)   
     loadSearch(usersFiltrados)
-    //agregar al layout en homwork list
-    console.log (usersFiltrados)
 })
 
-const loadSearch = (users) => {
-    let template = users.reduce((acc, cv) => {
-        acc += `
-        <li class="list-group-item d-inline-flex justify-content-between align-items-start homework-list__element">
-          <div class="ms-2 me-auto">
-            <div class="fw-bold">${cv.name}</div>
-            ${cv.email}
-          </div>
-          <span class="badge bg-primary rounded-pill">${cv.phone}</span>
-        </li>
-      `
-      return acc
-    }, '')
-    
-    document.querySelector('.homework-list').innerHTML = template
-  } 
+//CHANGE
 
+let selectionChange = document.getElementById('filter-change')
+selectionChange.addEventListener('change', () =>{
+
+    let searchItem = selectionChange.value
+    let usersFiltrados = filterUsers(searchItem)   
+    loadSearch(usersFiltrados)
+})
+
+let inputPress = document.getElementById('filter__value')
+inputPress.addEventListener('keypress', () =>{
+    let searchItem = inputPress.value
+    let usersFiltrados = filterUsers(searchItem)
+    loadSearch(usersFiltrados)
+})
   document.addEventListener('DOMContentLoaded', loadSearch)
 
