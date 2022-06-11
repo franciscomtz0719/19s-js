@@ -1,70 +1,58 @@
-let users = []
-
-const filterUsers = (strToFilter) => {
-
-    strToFilter = strToFilter.toLowerCase()
-    let filterUsers = users.filter((cv)=> {
-        if(
-            cv.name.toLowerCase().includes(strToFilter) ||
-            cv.username.toLowerCase().includes(strToFilter) ||
-            cv.email.toLowerCase().includes(strToFilter)
-
-        ){ //sentencias
-            return cv
+const createUser =  ( objUser ) => {
+    console.log(JSON.stringify(objUser))
+    const xhttp = new XMLHttpRequest()
+    xhttp.open( "POST",  
+    "https://koders19gjs-default-rtdb.firebaseio.com/users/.json", true)
+    xhttp.onload = function(data) {
+      console.log(data)
+        if(data.target.status >= 200 && data.target.status <= 399){
+            console.log(data.target.response)
         }
-    })
-    return filterUsers
-}
-
-
-const printUsers = (arrObjs) => {
-    let template = arrObjs.reduce((acc, user,) => {
-        return acc += `
-            <li class="list-group-item d-inline-flex justify-content-between align-items-start homework-list__element">
-            <div class="ms-2 me-auto">
-              <div class="fw-bold">${user.name}</div>
-              ${user.email}
-            </div>
-            <span class="badge bg-primary rounded-pill">${user.phone}</span>
-          </li>
-        `
-    }, '')
-    document.querySelector('.homework-list').innerHTML = template
-}
-
-
-let inputSearch = document.getElementById('filter__value')
-inputSearch.addEventListener('keyup', () =>{
-
-    //obtener el valor a buscar
-    let searchItem = inputSearch.value
-    //imprimir en consola
-    let usersFiltrados = filterUsers(searchItem)
-    
-    printUsers(usersFiltrados)
-    //agregar al layout en homwork list
-    console.log (usersFiltrados)
-})
-
-// Create an XMLHttpRequest object
-const primerPeticion = new XMLHttpRequest()
-
-// Define a callback function
-primerPeticion.onload = (response) => {
-    // Here you can use the Data
-    console.log('REspuesta lista')
-    console.log(response.target)
-
-    if(response.target.status >= 200 && response.target.status <= 299) {
-        // la respuesta fue satisfactoria
-        console.log( response.target.responseText )
-        users = JSON.parse(response.target.responseText)
-        printUsers(users)
     }
+    xhttp.send( JSON.stringify(objUser) )
+  }
+
+let user ={
+    name: 'Francsico',
+    lastName : 'Martinez',
+    age: 20
 }
-// Send a request
-// GET, POST, DELETE, PATCH, PUT
-primerPeticion.open("GET", "https://jsonplaceholder.typicode.com/users", false)
-// console.log(primerPeticion)
-primerPeticion.send()
-// console.log(primerPeticion)
+
+// createUser(user)
+
+const updateUser = (userUpdated) => {
+    const updatexhr = new XMLHttpRequest()
+    updatexhr.open('PATCH','https://firststepjs-25904-default-rtdb.firebaseio.com/users/-N4ALM6Nn9dyUKr9ti-a.json',true )
+
+    updatexhr.onload = (response) => {
+        if (response.target.status >= 200 && response.target.status < 400) {
+            console.log(response.target)
+            console.log(response.target.response)
+        }
+    }
+    updatexhr.send(JSON.stringify(userUpdated))
+}
+
+let updatedUser = {
+    name: 'Francsico Manuel',
+    lastName : 'Martinez Ibarra',
+    age: 27
+}
+
+const deleteUser  = ( idUser ) => {
+    const deletexhr = new XMLHttpRequest()
+    deletexhr.open(
+      'DELETE', 
+      `https://koders19gjs-default-rtdb.firebaseio.com/users/${idUser}.json`, 
+      true
+    )
+    deletexhr.onload = (response) => {
+      if(response.target.status >= 200 && response.target.status <= 399){
+        console.log(response.target)
+        console.log(response.target.response)
+      }
+    }
+    deletexhr.send()
+  }
+  
+  // deleteUser( '-N4AGk7rqMOm4L4KQ6eD')
