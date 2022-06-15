@@ -1,7 +1,7 @@
 
 const ajaxXHR = (callback, url, method = 'GET', obj = {} ) => {
   const xhttp = new XMLHttpRequest()
-  xhttp.open( method, `https://koders19gjs-default-rtdb.firebaseio.com${url}`, true)
+  xhttp.open( method, `https://firststepjs-25904-default-rtdb.firebaseio.com${url}`, true)
   xhttp.onload = function(data) {
       if(data.target.status >= 200 && data.target.status <= 399){
           let response = JSON.parse(data.target.response)
@@ -38,4 +38,38 @@ const ajaxXHR = (callback, url, method = 'GET', obj = {} ) => {
 
 
 // Listar todos los koders
-console.log('SU codigo para editar un koder aquí')
+console.log('SU codigo para ver todos los koders')
+
+
+// crear conexion
+const xhttp = new XMLHttpRequest()
+xhttp.open( 'GET', `https://firststepjs-25904-default-rtdb.firebaseio.com/koders/.json`, true)
+xhttp.onload = function(data) {
+    if(data.target.status >= 200 && data.target.status <= 399){
+      let koders = JSON.parse(data.target.response)
+      let template = ''
+      for(key in koders) {
+        console.log( koders[key] ) 
+        let { bootcamp, name, age, biography } = koders[key]
+
+        // console.log(name, age, biography, bootcamp)
+        template += `
+          <div class="col-12 col-sm-6 mb-3 ">
+              <div class="card koder__card">
+                <div class="card-body">
+                    <h5 class="card-title">${name} ${age} años</h5>
+                    <p class="card-text">${biography.slice(0, 20)}...</p>
+                    <p class="card-text">${bootcamp}</p>
+                    <a href="/interior.html?koderkey=${key}" class="btn btn-link">ver koder</a>
+                    <a href="/updatekoder.html?koderkey=${key}" class="btn btn-link">Editar koder</a>
+                </div>
+              </div>
+          </div>
+        `
+      }
+
+      document.querySelector('.all__posts').innerHTML = template
+    }
+}
+xhttp.send()
+
