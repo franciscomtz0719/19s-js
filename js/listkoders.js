@@ -2,7 +2,6 @@
 fetch('https://firststepjs-25904-default-rtdb.firebaseio.com/koders/.json')
 .then(response => {
   //validar que la respuesta del servidor sea ok, comprobar primero error
-  console.log(response)
   if (!response.ok) {
     throw new Error(`Algo salió mal, status ${response.status} ${response.statusText} type: ${response.type}`)
 //si todo bien retornamos el json de la respuesta
@@ -11,16 +10,12 @@ fetch('https://firststepjs-25904-default-rtdb.firebaseio.com/koders/.json')
   }
 })
 .then ((response) =>{
-  console.log(response)
-  
   let template = ''
   if (!response){
     console.log('No response')
   }else{
     for (let key in response){
       let { bootcamp, name, age, biography } = response[key]
-      console.log(response[key])
-      console.log(name)
       template+= `
           <div class="col-12 col-sm-6 mb-3 ">
             <div class="card">
@@ -36,7 +31,6 @@ fetch('https://firststepjs-25904-default-rtdb.firebaseio.com/koders/.json')
       `
     }
   }
-
   document.querySelector('#card__koders').innerHTML = template
 }).catch(err => {
   console.log(err)
