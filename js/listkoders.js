@@ -1,75 +1,43 @@
 
-const ajaxXHR = (callback, url, method = 'GET', obj = {} ) => {
-  const xhttp = new XMLHttpRequest()
-  xhttp.open( method, `https://firststepjs-25904-default-rtdb.firebaseio.com${url}`, true)
-  xhttp.onload = function(data) {
-      if(data.target.status >= 200 && data.target.status <= 399){
-          let response = JSON.parse(data.target.response)
-          callback(response)
-      }
-  }
-  if(method === 'GET' || method === 'DELETE'){
-      xhttp.send()
+fetch('https://firststepjs-25904-default-rtdb.firebaseio.com/koders/.json')
+.then(response => {
+  //validar que la respuesta del servidor sea ok, comprobar primero error
+  console.log(response)
+  if (!response.ok) {
+    throw new Error(`Algo salió mal, status ${response.status} ${response.statusText} type: ${response.type}`)
+//si todo bien retornamos el json de la respuesta
   } else {
-    xhttp.send( JSON.stringify(obj) )
+    return response.json()
   }
-}
-
-/* Estructura de cada koder
-  {
-    name: 'jorge',
-    age: 30,
-    bootcamp: 'js',
-    biography: 'lorem ipsum dolot sit amet'
-  }
-*/
-
-// uso de la funcion 
-// GET , DELETE
-// ajaxXHR(nombreDeFuncionAllamar, `/koders/.json`, 'GET')
-// ajaxXHR(nombreDeFuncionAllamar, `/koders/${idKoder}.json`, 'DELETE')
-
-// POST, PUT, PATCH
-// ajaxXHR(nombreDeFuncionAllamar, `/koders/${idKoder}.json`, 'POST', obj)
-// ajaxXHR(nombreDeFuncionAllamar, `/koders/${idKoder}.json`, 'PUT', obj)
-// ajaxXHR(nombreDeFuncionAllamar, `/koders/${idKoder}.json`, 'PATCH', obj)
-
-
-
-
-// Listar todos los koders
-console.log('SU codigo para ver todos los koders')
-
-
-// crear conexion
-const xhttp = new XMLHttpRequest()
-xhttp.open( 'GET', `https://firststepjs-25904-default-rtdb.firebaseio.com/koders/.json`, true)
-xhttp.onload = function(data) {
-    if(data.target.status >= 200 && data.target.status <= 399){
-      let koders = JSON.parse(data.target.response)
-      let template = ''
-      for(key in koders) {
-        console.log( koders[key] ) 
-        let { bootcamp, name, age, biography } = koders[key]
-
-        // console.log(name, age, biography, bootcamp)
-        template += `
+})
+.then ((response) =>{
+  console.log(response)
+  
+  let template = ''
+  if (!response){
+    console.log('No response')
+  }else{
+    for (let key in response){
+      let { bootcamp, name, age, biography } = response[key]
+      console.log(response[key])
+      console.log(name)
+      template+= `
           <div class="col-12 col-sm-6 mb-3 ">
-              <div class="card koder__card">
-                <div class="card-body">
-                    <h5 class="card-title">${name} ${age} años</h5>
-                    <p class="card-text">${biography.slice(0, 20)}...</p>
-                    <p class="card-text">${bootcamp}</p>
-                    <a href="/interior.html?koderkey=${key}" class="btn btn-link">ver koder</a>
-                    <a href="/updatekoder.html?koderkey=${key}" class="btn btn-link">Editar koder</a>
-                </div>
+            <div class="card">
+              <h5 class="card-header">${name}, ${age} años </h5>
+              <div class="card-body">
+                  <h5 class="card-title"> ${bootcamp} </h5>
+                  <p class="card-text"> ${biography.slice(0,20)}...</p>
+                  <a href="/interior.html?koderkey=${key}" class="btn btn-link btn-link__details">Ver Koder</a>
+                  <a href="/updatekoder.html?koderkey=${key}" class="btn btn-link btn-link__edit">Editar Koder</a>
               </div>
+            </div>
           </div>
-        `
-      }
-
-      document.querySelector('.all__posts').innerHTML = template
+      `
     }
-}
-xhttp.send()
+  }
 
+  document.querySelector('#card__koders').innerHTML = template
+}).catch(err => {
+  console.log(err)
+})

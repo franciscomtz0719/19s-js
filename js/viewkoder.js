@@ -1,44 +1,38 @@
 
-// url 
-// http://127.0.0.1:5500/interior.html?koderkey=-N4TJNibKM9OvZbWSB_R
-
-
-// window.location.search
-// "?koderkey=-N4TJNibKM9OvZbWSB_R"
-//  
-
 let idKoder = window.location.search.substring(10)
 console.log(idKoder)
 
-// Hacer una peticion al server
+fetch(`https://firststepjs-25904-default-rtdb.firebaseio.com/koders/${idKoder}.json`)
+.then((response) => {
 
-// crear conexion
-const xhttp = new XMLHttpRequest()
-xhttp.open( 'GET', `https://firststepjs-25904-default-rtdb.firebaseio.com/koders/${idKoder}.json`, true)
-xhttp.onload = function(data) {
-    if(data.target.status >= 200 && data.target.status <= 399){
-
-        let response = JSON.parse(data.target.response)
-        let { name, age, biography, bootcamp } = response
-
-        let template = `
-                <div class="col-12 col-sm-6">
-                <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">${name} ${age} años</h5>
-                    <p class="card-text">${biography}</p>
-                    <p class="card-text">${bootcamp}</p>
-                    <a href="/index.html" class="btn btn-link">Ver todos los koders</a>
-                </div>
-                </div>
-            </div>
-        `
-        document.querySelector('.wrap__koder').innerHTML = template
+    if(!response.ok){
+        throw new Error (`Algo salió mal ${response.status}`)
+    }else{
+        return response.json()
     }
-}
-xhttp.send()
+})
+.then((response) => {
 
-// cuando el response este listo
-// pintar la informacion del koder en un card
+    console.log(response)
+
+    
+    let {name, biography, bootcamp, age} = response
+    
+    let template = 
+    `
+                <div class="card">
+                    <h5 class="card-header">${name}, ${age} años </h5>
+                    <div class="card-body">
+                        <h5 class="card-title"> ${bootcamp} </h5>
+                        <p class="card-text"> ${biography}</p>
+                        <a href="/index.html" class="btn btn-primary">Volver a listado</a>
+                    </div>
+                </div>
+    `
+
+document.getElementById('koder__detail').innerHTML = template
+})
+
+
 
 

@@ -15,4 +15,30 @@
   width: 100%;
   height: 38px;
 }
+
+.btn-link {
+  border: none;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: white;
+  width: 8rem;
+  -webkit-transition: 1s ease;
+  transition: 1s ease;
+}
+
+.btn-link__details {
+  background: rgba(84, 135, 194, 0.837);
+}
+
+.btn-link__edit {
+  background: #375edf;
+}
+
+.btn-link:hover {
+  border: 1px solid #0545c5;
+}
+
+.btn-primary {
+  width: 8rem;
+}
 /*# sourceMappingURL=style.css.map */
