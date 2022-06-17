@@ -1,7 +1,7 @@
-let idKoder = window.location.search.substring(10)
-console.log(idKoder)
+let idBook = window.location.search.substring(10)
+console.log(idBook)
 
-fetch( `https://firststepjs-25904-default-rtdb.firebaseio.com/koders/${idKoder}.json` )
+fetch( `https://firststepjs-25904-default-rtdb.firebaseio.com/books/${idBook}.json` )
 .then(response => {
   //validar que la respuesta del servidor sea ok, comprobar primero error
   if (!response.ok) {
@@ -12,17 +12,17 @@ fetch( `https://firststepjs-25904-default-rtdb.firebaseio.com/koders/${idKoder}.
   }
 })
 .then ((response) =>{
-  let template = ''
   if (!response){
     console.log('No response')
   }else{
     console.log(response)
-      let { bootcamp, name, age, biography } = response
+    let { name, author, portrait, genre, resume } = response
 
-        document.getElementById('update__nombre').value = name
-        document.getElementById('update__edad').value = age
-        document.getElementById('update__biografia').value = biography
-        document.getElementById('update__bootcamp').value = bootcamp
+    document.getElementById('update__nombre').value = name
+    document.getElementById('update__autor').value = author
+    document.getElementById('update__portrait').value = portrait
+    document.getElementById('update__book-genre').value = genre
+    document.getElementById('update__resume').value = resume
 
   }
 }).catch(err => {
@@ -30,31 +30,34 @@ fetch( `https://firststepjs-25904-default-rtdb.firebaseio.com/koders/${idKoder}.
 })
 
 
-let btnUpdate = document.getElementById('updateKoder')
+let btnUpdate = document.getElementById('updateBook')
 btnUpdate.addEventListener('click', () =>{
 
-    let name = document.getElementById('update__nombre').value
-    let age = document.getElementById('update__edad').value
-    let biography = document.getElementById('update__biografia').value
-    let bootcamp = document.getElementById('update__bootcamp').value 
+  let nombre = document.getElementById('update__nombre').value
+  let autor = document.getElementById('update__autor').value
+  let portrait = document.getElementById('update__portrait').value
+  let genre = document.getElementById('update__book-genre').value
+  let resume = document.getElementById('update__resume').value
     if (
-      name === ''||
-      age === '' || 
-      biography === '' ||
-      bootcamp === ''
+      nombre === ''||
+      autor === '' || 
+      portrait === '' ||
+      genre === '' ||
+      resume === ''
     ){
       alert('Campos vacios')
     } else {
-      let updatedKoder = {
-        name: name,
-        age: age,
-        biography: biography,
-        bootcamp: bootcamp   
+      let updatedBook = {
+        name: nombre,
+        author: autor ,
+        resume: resume,
+        genre: genre,
+        portrait: portrait   
       }
 
-      fetch(`https://firststepjs-25904-default-rtdb.firebaseio.com/koders/${idKoder}.json`, {
+      fetch(`https://firststepjs-25904-default-rtdb.firebaseio.com/books/${idBook}.json`, {
         method: 'PATCH',
-        body: JSON.stringify(updatedKoder),
+        body: JSON.stringify(updatedBook),
         headers: {
             "Content-type": "application/json; charset=UTF-8"
         }
@@ -64,7 +67,7 @@ btnUpdate.addEventListener('click', () =>{
     })
     .then( (finalResponse) => {
         console.log(finalResponse)
-        alert(`El usuario ${finalResponse.name} con el id ${idKoder} ha sido actualizado`)
+        alert(`El usuario ${finalResponse.name} con el id ${idBook} ha sido actualizado`)
     })
     .catch( (err) => {
         console.log(error)
@@ -73,10 +76,10 @@ btnUpdate.addEventListener('click', () =>{
   })
 
 
-  let btnDelete = document.getElementById('deleteKoder')
+  let btnDelete = document.getElementById('deleteBook')
   btnDelete.addEventListener('click', () =>{
   
-    fetch(`https://firststepjs-25904-default-rtdb.firebaseio.com/koders/${idKoder}.json`, {
+    fetch(`https://firststepjs-25904-default-rtdb.firebaseio.com/books/${idBook}.json`, {
       method: 'DELETE'
   })
   .then( response => {

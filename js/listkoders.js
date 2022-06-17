@@ -1,5 +1,5 @@
 
-fetch('https://firststepjs-25904-default-rtdb.firebaseio.com/koders/.json')
+fetch('https://firststepjs-25904-default-rtdb.firebaseio.com/books/.json')
 .then(response => {
   //validar que la respuesta del servidor sea ok, comprobar primero error
   if (!response.ok) {
@@ -15,23 +15,29 @@ fetch('https://firststepjs-25904-default-rtdb.firebaseio.com/koders/.json')
     console.log('No response')
   }else{
     for (let key in response){
-      let { bootcamp, name, age, biography } = response[key]
+      let { name, author, portrait, genre, resume } = response[key]
       template+= `
-          <div class="col-12 col-sm-6 mb-3 ">
-            <div class="card">
-              <h5 class="card-header">${name}, ${age} años </h5>
+          <div class="col-4 col-sm-3 m-3 ">
+          <div class="card" style="width: 20rem;">
+              <img src="${portrait}" class="card-img-top" alt="Book"/>
               <div class="card-body">
-                  <h5 class="card-title"> ${bootcamp} </h5>
-                  <p class="card-text"> ${biography.slice(0,20)}...</p>
-                  <a href="/interior.html?koderkey=${key}" class="btn btn-link btn-link__details">Ver Koder</a>
-                  <a href="/updatekoder.html?koderkey=${key}" class="btn btn-link btn-link__edit">Editar Koder</a>
+                  <h5 class="card-title">${name}</h5>
+                  <p class="card-text">${resume.slice(0,60)}...</p>
               </div>
-            </div>
+              <ul class="list-group list-group-light list-group-small">
+                  <li class="list-group-item px-4">Autor: ${author}</li>
+                  <li class="list-group-item px-4">Genero: ${genre}</li>
+              </ul>
+              <div class="card-body">
+                <a href="/interior.html?koderkey=${key}" class="btn btn-link btn-link__details">Ver Detalle</a>
+                <a href="/updatekoder.html?koderkey=${key}" class="btn btn-link btn-link__edit">Editar</a>
+              </div>
           </div>
+      </div>
       `
     }
   }
-  document.querySelector('#card__koders').innerHTML = template
+  document.querySelector('#book__card').innerHTML = template
 }).catch(err => {
   console.log(err)
 })

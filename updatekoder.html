@@ -14,7 +14,7 @@
     <body>
 
         <main class="main">
-            <h1 class="text-center mt-5 mb-4 ">Actualizar koder</h1>
+            <h1 class="text-center mt-5 mb-4 ">Actualizar Libro</h1>
             <div class="container d-flex justify-content-center">
     
 
@@ -23,55 +23,64 @@
                       <img src="https://secure.meetupstatic.com/photos/event/a/1/6/9/600_472001321.jpeg"
                         class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
                         alt="Sample photo">
-                      <div class="card-body p-4 p-md-5">
-                        <h1 class="mb-4 pb-2 ">Actualizar koder</h1>
-            
-                        <form class="px-md-2">
-            
-                          <div class="form-outline mb-4">
-                            <input type="text" id="update__nombre" class="form-control" />
-                            <label class="form-label">Nombre</label>
-                          </div>
-            
-                          <div class="row">
-                            <div class="col-6">
-            
-                              <div class="form-outline datepicker">
-                                <input type="text" class="form-control" id="update__edad" />
-                                <label class="form-label">Edad</label>
+                        <div class="card-body p-4 p-md-5">
+                          <h1 class="mb-4 pb-2 ">Actualizar libro</h1>
+              
+                          <form class="px-md-2">
+              
+                            <div class="form-outline mb-4">
+                              <input type="text" id="update__nombre" class="form-control" />
+                              <label class="form-label">Nombre</label>
+                            </div>
+              
+                            <div class="row">
+                              <div class="col-12">
+              
+                                <div class="form-outline datepicker">
+                                  <input type="text" class="form-control" id="update__autor" />
+                                  <label class="form-label">Autor</label>
+                                </div>
+              
                               </div>
-            
-                            </div>
-                            <div class="col-6">
-            
-                              <select id="update__bootcamp" class="bootcamp__update">
-                                <option value="Bootcamp" disabled>Bootcamp</option>
-                                <option value="JavaScript">JavaScript</option>
-                                <option value="Phyton">Phyton</option>
-                                <option value="Java">Java</option>
-                              </select>
-            
-                            </div>
-                          </div>
-            
-                          <div class="row mb-4 pb-2 ">
-                            <div class="col-md-12">
-            
-                              <div class="form-outline">
-                                  <textarea name="biografia" id="update__biografia" class="form-control" cols="30" rows="10"></textarea>
-                                <label class="form-label">Biografía</label>
+                              <div class="col-6">
+              
+                                <div class="form-outline datepicker">
+                                  <input type="text" class="form-control" id="update__portrait" />
+                                  <label class="form-label">Link de Portada</label>
+                                </div>
+              
                               </div>
-            
+                              <div class="col-6">
+              
+                                <select id="update__book-genre" class="update__book__genre">
+                                  <option value="Genero" disabled>Genero</option>
+                                  <option value="Terror">Terror</option>
+                                  <option value="Suspenso">Suspenso</option>
+                                  <option value="Drama">Drama</option>
+                                  <option value="Romance">Romance</option>
+                                  <option value="Biografico">Biografíco</option>
+                                  <option value="Tecnico">Técnico</option>
+                                </select>
+              
+                              </div>
                             </div>
-                          </div>
-            
-                          <button type="button" class="btn btn-success btn-lg mb-1" id="updateKoder">Actualizar Koder</button>
-                          <button type="button" class="btn btn-danger btn-lg mb-1" id="deleteKoder">Borrar Koder</button>
-
-            
-                        </form>
-            
-                      </div>
+              
+                            <div class="row mb-4 pb-2 ">
+                              <div class="col-md-12">
+              
+                                <div class="form-outline">
+                                    <textarea name="resume" id="update__resume" class="form-control" cols="30" rows="10"></textarea>
+                                  <label class="form-label">Resumen/Descripción</label>
+                                </div>
+              
+                              </div>
+                            </div>
+                            
+                            <button type="button" class="btn btn-success btn-lg mb-1 btn-link" id="updateBook">Actualizar</button>
+                            <button type="button" class="btn btn-danger btn-lg mb-1 btn-link" id="deleteBook">Borrar</button>
+                            <a type="button" href="./index.html" class="btn btn-primary btn-lg mb-1 btn-link" id="back">Volver</a>
+                          </form>
+                        </div>
                     </div>
                   </div>
 
